@@ -26,6 +26,11 @@ project "VEngine"
         "%{prj.location}/src/**.cpp",
     }
 
+	includedirs
+	{
+		"%{prj.location}/src/"
+	}
+
     sysincludedirs
     {
         "usr/local/include",

@@ -8,12 +8,11 @@ namespace VEngine {
         : m_Width(width), m_Height(height), m_Name(name)
     {
         Init();
-        m_Vulkan = new Vulkan::Vulkan();
     }
 
     Window::~Window()
     {
-        delete m_Vulkan;
+        delete m_Renderer;
 
         glfwDestroyWindow(m_Window);
         glfwTerminate();
@@ -26,6 +25,7 @@ namespace VEngine {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
         m_Window = glfwCreateWindow(m_Width, m_Height, m_Name.c_str(), nullptr, nullptr);
+        m_Renderer = new Renderer((GLFWwindow* const)GetGlfwWindow());
     }
 
     void Window::OnUpdate()

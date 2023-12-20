@@ -7,7 +7,7 @@ namespace VEngine {
 
     Application::Application()
     {
-        m_Window = new Window(WIDTH, HEIGHT, "VEngine");
+        m_Window = new Window(WIDTH, HEIGHT, "Vulkan Engine");
     }
 
     Application::~Application()

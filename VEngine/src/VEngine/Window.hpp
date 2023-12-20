@@ -1,8 +1,10 @@
 #pragma once
 
+#include <GLFW/glfw3.h>
+
 #include <string>
 
-#include "Vulkan/Vulkan.hpp"
+#include "VEngine/Renderer/Renderer.hpp"
 
 namespace VEngine {
 
@@ -13,17 +15,19 @@ namespace VEngine {
         ~Window();
 
         bool ShouldClose() { return glfwWindowShouldClose(m_Window); }
-        void CreateWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 
-        void Init();
+        GLFWwindow* GetGlfwWindow() const { return m_Window; }
+
         void OnUpdate();
+    private:
+        void Init();
     private:
         const int m_Width;
         const int m_Height;
-        const std::string m_Name;
+        const std::string& m_Name;
 
         GLFWwindow* m_Window;
-        Vulkan::Vulkan* m_Vulkan;
+        Renderer* m_Renderer;
     };
 
 }
